@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 
 import axios from 'axios';
 function Info() {
-    const [ep,addep] = React.useState([]);
+    const [ep,addep] = React.useState();
     const [data,setData] = React.useState([]);
     const {id} = useParams();
     React.useEffect(()=>{
@@ -14,16 +14,15 @@ function Info() {
             setData(res.data.results);
         })
     },[])
-    // function print(num){
-    //     for(let i=1;i<=num;i++){
-    //         addep(prev=>[...prev,i])
-    //     }
-    // }
 
     
     return (
         
         <div className='info'>
+        {
+            ep!=null && 
+            <iframe src={ep} width="100%" height="500px"  frameborder="0"></iframe>
+        }
             {
                 data.map(item=>{
                     return(
@@ -46,8 +45,9 @@ function Info() {
                                     <button onClick={()=>{
                                         axios('https://anime5311.herokuapp.com/api/watching/'+id+'/'+index)
                                         .then(res=>{
-                                            console.log(res.data.link)
-                                            window.location.href = res.data.link
+                                            // console.log(res.data.link)
+                                            // window.location.href = res.data.link
+                                            addep(res.data.link)
                                         })
                                         
                                     }}> ep: {index} </button>
