@@ -1,6 +1,8 @@
 import React from 'react'
 import './Main.css';
 import axios from 'axios'
+import FlipMove from 'react-flip-move';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import {useHistory} from 'react-router-dom';
 function Main({data}) {
     const history = useHistory();
@@ -14,23 +16,29 @@ function Main({data}) {
         }
     }
     return (
-        <div className='main'>
+        <FlipMove enterAnimation="fade" leaveAnimation="elevator" className='main'>
+                
             {
                 data.length!=0?
                 data.map((item)=>{
                     return(
+
                         <div className='card' onClick={()=>{
                             history.push('/info/'+item.id)
                         }}>
                             <img src={item.image} alt="" />
                             <h4> {checkLength(item.title)} </h4>
+                            <div id='visible'>
+                            <PlayCircleFilledIcon id='ic'/>
+                            </div>
                         </div>
-                    )
+                    )   
                 })
                 :
-                <h1>Loading...</h1>
+                <h1 style={{color:'purple'}}>Loading...</h1>
             }
-        </div>
+        
+            </FlipMove>
     )
 }
 

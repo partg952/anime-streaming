@@ -5,6 +5,7 @@ import axios from 'axios';
 import Navbar from './components/Navbar';
 import Main from './components/Main';
 import Info from './components/Info';
+import Genres from './components/Genres';
 import {BrowserRouter as Router,Route,useParams} from 'react-router-dom';
 function App() {
 const [data,setData] = React.useState([]);
@@ -26,6 +27,7 @@ React.useEffect(()=>{
     <div className="App">
       <Router>
      <Navbar data={data} setData={setData}/>
+     <Genres setData={setData}/>
      <Route path='/' exact >
     <Main data={data}/>
      </Route>

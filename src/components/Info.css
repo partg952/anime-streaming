@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 .info{
-    color:white;
-    margin-top:200px;
+    color:purple;
+    margin-top:10px;
     font-family: 'Proza Libre', sans-serif;
-    /* align-items:center;
-    justify-content:center; */
 }
 #info-div img{
     float:left;
@@ -15,11 +13,9 @@
     border-radius: 6px;
 }
 h3{
-    color:white;
+    color:purple;
 }
-/* p{
-    padding:5px;
-} */
+
 @media only screen and (max-width: 450px) {
 	#info-div img{
         float:none;
@@ -45,7 +41,7 @@ h3{
     font-weight: bolder;
 }
 #episodes button:hover{
-    background-color: black;
+    background-color: purple;
     border: 1px solid white;
     color:white;
 }

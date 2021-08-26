@@ -7,26 +7,33 @@ function Navbar({data,setData}) {
     const ref = React.useRef();
     const history = useHistory();
     function searchAnime(value){
-        axios(`https://anime5311.herokuapp.com/api/search/${value}/1`)
-        .then((res)=>{
-            setData(res.data.results);
-            console.log(res.data)
-            history.push('/')
-        })
-    }
-    window.onscroll = () =>{
-        if(window.scrollY > 30){
-            document.getElementById('navabar').classList.add('class')
-        }
-        else{
-            document.getElementById('navabar').classList.remove('class')
+        if(value.length!=0){
+            setData([]);
+            axios(`https://anime5311.herokuapp.com/api/search/${value}/1`)
+            .then((res)=>{
+                setData(res.data.results);
+                console.log(res.data)
+                history.push('/')
+            })
         }
     }
     return (
         <div className='navabar' id='navabar'>
             
             <h1 onClick={()=>{
-                window.location.reload();
+                history.push('/')
+                setData([]);
+                for(let i=0;i<5;i++){
+                    axios('https://anime5311.herokuapp.com/api/popular/'+i)
+                    .then((res)=>{
+                      // console.log(res.data);
+                      res.data.results.forEach((item)=>{
+                          setData(prev=>[...prev,item]);
+                        })
+                      
+                      // console.log(data)
+                    })
+                  }
             }}>Stingrr</h1>
             <span id='search'>
             <input type="text" ref={ref} onKeyPress={(e)=>{
