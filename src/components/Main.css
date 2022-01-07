@@ -20,19 +20,42 @@
     position: relative;
     border-radius: 6px;
     margin: 7px;
-    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.034), -2px -2px 5px white,
-     2px 2px 3px gray,  -3px -5px 5px white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     height:300px;
     width:200px;
+    color: black;
     overflow: hidden;
+    transition: all 200ms ease;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-color: purple;
+    cursor: pointer;
+    position: relative;
 }
 
-.card:hover > #visible{
-    visibility: visible;
+.card > h4{
+    z-index: 99999;
+    color: black;
 }
+#recently-watched-episode{
+    visibility: visible;
+    color: purple;
+    font-weight: 700;
+}
+/* .card:hover > #visible{
+    visibility: visible;
+} */
+.card:hover > h4{
+    color: black;
+}
+.card:hover > #visible{
+visibility: visible;
+}
+.card:hover > img{
+    transform: scale(1.5);
+    position: absolute;
+}
+
 .card h4{
     position:absolute;
     bottom:-10px;
@@ -47,6 +70,8 @@
     width:100%;
     left:0;
     height:80%;
+    transition: all 200ms ease;
+    
 }
 
 #visible{
@@ -57,9 +82,9 @@
     align-items: center;
     justify-content: center;
     height:100%;
-    font-size:20px;
+    font-size:0;
     width:100%;
-    background-color: rgba(0, 0, 0, 0.473);
+    background-color: rgba(255, 255, 255, 0.473);
 }
 
 #ic{
