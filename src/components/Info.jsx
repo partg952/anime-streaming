@@ -9,10 +9,12 @@ function Info() {
   const [current_ep, setEP] = React.useState("None");
   const { id } = useParams();
   React.useEffect(() => {
-    axios("https://anime5311.herokuapp.com/api/details/" + id).then((res) => {
-      console.log(res.data);
-      setData(res.data.results);
-    });
+    axios("https://single-api-bay.vercel.app/anime/api/details/" + id).then(
+      (res) => {
+        console.log(res.data);
+        setData(res.data.results);
+      }
+    );
   }, []);
 
   return (
@@ -50,12 +52,13 @@ function Info() {
                       localStorage.setItem("anime_name", item.title);
                       setEP(index + "EP");
                       axios(
-                        "https://anime5311.herokuapp.com/api/watching/" +
+                        "https://single-api-bay.vercel.app/anime/api/watching/" +
                           id +
                           "/" +
                           index
                       ).then((res) => {
-                        addep(res.data.link);
+                        console.log(res.data);
+                        addep(res.data);
                       });
                     }}
                   >

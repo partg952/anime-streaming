@@ -12,14 +12,16 @@ function App() {
   // console.log(data);
   React.useEffect(() => {
     for (let i = 0; i < 5; i++) {
-      axios("https://anime5311.herokuapp.com/api/popular/" + i).then((res) => {
-        // console.log(res.data);
-        res.data.results.forEach((item) => {
-          setData((prev) => [...prev, item]);
-        });
+      axios("https://single-api-bay.vercel.app/anime/api/popular/" + i).then(
+        (res) => {
+          // console.log(res.data);
+          res.data.results.forEach((item) => {
+            setData((prev) => [...prev, item]);
+          });
 
-        // console.log(data)
-      });
+          // console.log(data)
+        }
+      );
     }
   }, []);
   return (

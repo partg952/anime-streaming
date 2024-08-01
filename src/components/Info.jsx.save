@@ -8,7 +8,7 @@ function Info() {
     const [data,setData] = React.useState([]);
     const {id} = useParams();
     React.useEffect(()=>{
-        axios('https://anime5311.herokuapp.com/api/details/'+id)
+        axios('https://single-api-bay.vercel.app/anime/api/details/'+id)
         .then((res)=>{
             console.log(res.data);
             setData(res.data.results);
@@ -43,7 +43,7 @@ function Info() {
                                 return(
                                     
                                     <button onClick={()=>{
-                                        axios('https://anime5311.herokuapp.com/api/watching/'+id+'/'+index)
+                                        axios('https://single-api-bay.vercel.app/anime/api/watching/'+id+'/'+index)
                                         .then(res=>{
                                             // console.log(res.data.link)
                                             // window.location.href = res.data.link
